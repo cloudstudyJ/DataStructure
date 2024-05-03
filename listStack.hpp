@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./dataStructureBase.hpp"
+#include "./typeHandler.hpp"
 
 template <typename T>
 class Stack: public DataStructureBase {
@@ -36,7 +37,8 @@ class Stack: public DataStructureBase {
 
 template <typename T> Stack<T>::Stack()
     : DataStructureBase{} { }
-template <typename T> Stack<T>::Stack(Stack<T>&& other) noexcept { *this = move(other); }
+template <typename T> Stack<T>::Stack(Stack<T>&& other) noexcept
+    : DataStructureBase{} { *this = move(other); }
 template <typename T> Stack<T>::~Stack() noexcept { clear(); }
 
 template <typename T> Stack<T>::operator bool() const noexcept { return !isEmpty(); }
@@ -45,6 +47,8 @@ template <typename T> Stack<T>& Stack<T>::operator=(Stack<T>&& other) noexcept {
     clear();
 
     mTail = other.mTail;
+    mSize = other.mSize;
+
     other.mTail = { };
     other.mSize = { };
 
