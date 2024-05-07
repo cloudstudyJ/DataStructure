@@ -3,13 +3,6 @@
 #include "./dataStructureBase.hpp"
 #include "./typeHandler.hpp"
 
-// test
-#include <iostream>
-
-using std::cout;
-using std::endl;
-// end of test
-
 template <typename T>
 class Deque: public DataStructureBase {
     Deque(const Deque<T>& other) = delete;
@@ -44,17 +37,6 @@ class Deque: public DataStructureBase {
 
         T& front();
         T& back();
-
-        void display() {
-            Node* current = mHead;
-
-            while (current != nullptr) {
-                cout << current->data << ' ';
-
-                current = current->next;
-            }
-            cout << endl;
-        }
 
     private:
         Node* mHead{ };
